@@ -1,9 +1,9 @@
 package com.your.team13.week4;
-public class Calculate { // ��길!
+public class Calculate { // 계산 !
 	Customer customer;
 
-	public Calculate() {
-		this.customer = new Customer("������", "����", "3/20", new Gold(), 3, 480);
+	public Calculate(Customer customer) {
+		this.customer = customer;
 	}
 
 	public double total_rate() {
