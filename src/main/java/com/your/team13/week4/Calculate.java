@@ -8,17 +8,35 @@ public class Calculate { // 계산 !
 
 	public double total_rate() {
 		double sum = 0;
-		// sum = sum + c.plan.getBasic_monthly_rate();
-		if (customer.plan instanceof Gold) {
 		
-		} else if (customer.plan instanceof Silver) {
-
+		if(this.isFamliy_discount()) {
+			sum += customer.plan.getBasic_monthly_rate() + (customer.plan.additional_line_rate * 2) + ((customer.getLine_number() - 3) * 5);
 		}
+		else {
+			sum += customer.plan.getBasic_monthly_rate() + (customer.plan.additional_line_rate * (customer.getLine_number() - 1));
+		}
+		
+		if(this.isOverCalltime()) {
+			sum += (customer.getCallTime() - customer.plan.getIncluded_minutes()) * customer.plan.getRate_per_excess_minutes();					
+		}
+		
 		return sum;
 	}
 	
-	public double famliy_discount(){
-		return 0;
+	public boolean isFamliy_discount(){
+		if(customer.getLine_number() >= 4) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean isOverCalltime(){
+		if(customer.getCallTime() - customer.plan.getIncluded_minutes() > 0 ) {
+			return true;
+		}
+		
+		return false;
 	}
 
 }
