@@ -17,11 +17,11 @@ public class App {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.print("Plan : ");
-		input_plan = sc.next();
+		input_plan = sc.next().toLowerCase();
 
-		if (input_plan.equals("Gold")) {
+		if (input_plan.equals("gold")) {
 			plan = new Gold();
-		} else if (input_plan.equals("Silver")) {
+		} else if (input_plan.equals("silver")) {
 			plan = new Silver();
 		}
 
