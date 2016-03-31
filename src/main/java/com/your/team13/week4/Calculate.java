@@ -10,11 +10,10 @@ public class Calculate { // 계산 !
 		double sum = 0;
 		// sum = sum + c.plan.getBasic_monthly_rate();
 		if (customer.plan instanceof Gold) {
-
+		
 		} else if (customer.plan instanceof Silver) {
 
 		}
-
 		return sum;
 	}
 	
