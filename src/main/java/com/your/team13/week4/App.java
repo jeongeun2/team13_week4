@@ -10,21 +10,23 @@ public class App {
 
 	public static void main(String[] args) {
 
-		String plan;
+		String input_plan;
 		int calltime;
 		int line_number;
-
-		Calculate calculate = new Calculate();
+		
+		Plan plan = null;
+		Calculate calculate;
+		Customer customer;
 
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Plan : ");
-		plan = sc.next();
+		input_plan = sc.next();
 
-		if (plan.equals("Gold")) {
-			Gold gold = new Gold();
-		} else if (plan.equals("Silver")) {
-			Silver silver = new Silver();
+		if (input_plan.equals("Gold")) {
+			plan = new Gold();
+		} else if (input_plan.equals("Silver")) {
+			plan = new Silver();
 		}
 
 		System.out.println("총사용시간 : ");
@@ -34,6 +36,9 @@ public class App {
 		line_number = sc.nextInt();
 
 		sc.close();
+		
+		customer = new Customer(plan, calltime, line_number);
+		calculate = new Calculate(customer);
 
 		System.out.println("금액 : " + calculate.total_rate());
 	}
